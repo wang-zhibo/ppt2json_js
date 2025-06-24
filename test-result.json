@@ -1,0 +1,23 @@
+{
+  "themeColors": {
+    "dk1": "000000",
+    "lt1": "FFFFFF",
+    "dk2": "778495",
+    "lt2": "F0F0F0",
+    "accent1": "01EEE6",
+    "accent2": "BE02DB",
+    "accent3": "01EEE6",
+    "accent4": "BE02DB",
+    "accent5": "01EEE6",
+    "accent6": "BE02DB",
+    "hlink": "4472C4",
+    "folHlink": "BFBFBF"
+  },
+  "size": {
+    "cx": 12192000,
+    "cy": 6858000
+  },
+  "width": 12192000,
+  "height": 6858000,
+  "slides": []
+}

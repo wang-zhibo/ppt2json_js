@@ -1,0 +1,94 @@
+html, body, #root {
+  background: #181c24 !important;
+  color: #e0e6ef !important;
+  min-height: 100vh;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #181c24 !important;
+  color: #e0e6ef !important;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+  background: #2d3344;
+  color: #e0e6ef;
+  padding: 2px 4px;
+  border-radius: 3px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  background: #232837;
+  color: #e0e6ef;
+}
+
+.upload-area {
+  border: 2px dashed #2d3344;
+  border-radius: 8px;
+  padding: 40px;
+  text-align: center;
+  background: #232837;
+  color: #e0e6ef;
+  transition: border-color 0.3s;
+  cursor: pointer;
+}
+
+.upload-area:hover {
+  border-color: #7ea1ff;
+  background: #2d3344;
+}
+
+.upload-area.dragover {
+  border-color: #7ea1ff;
+  background-color: #2d3344;
+}
+
+.json-viewer {
+  background: #232837;
+  color: #e0e6ef;
+  border-radius: 8px;
+  padding: 20px;
+  margin-top: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  border: 1px solid #2d3344;
+}
+
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+  color: #e0e6ef;
+}
+
+.error {
+  color: #ff6b6b;
+  text-align: center;
+  padding: 20px;
+  background: #2d1c1c;
+  border-radius: 8px;
+  border: 1px solid #ff6b6b;
+}
+
+.success {
+  color: #51cf66;
+  text-align: center;
+  padding: 20px;
+  background: #1c2d1c;
+  border-radius: 8px;
+  border: 1px solid #51cf66;
+} 
