@@ -147,13 +147,38 @@ function App() {
   const copyJSON = async () => {
     if (!result) return;
 
+    const dataStr = JSON.stringify(result, null, 2);
+    
     try {
-      const dataStr = JSON.stringify(result, null, 2);
-      await navigator.clipboard.writeText(dataStr);
-      showNotification('JSON已复制到剪贴板！', 'success');
+      // 检查是否支持现代剪贴板API
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        await navigator.clipboard.writeText(dataStr);
+        showNotification('JSON已复制到剪贴板！', 'success');
+      } else {
+        // 备用方案：使用传统的document.execCommand
+        const textArea = document.createElement('textarea');
+        textArea.value = dataStr;
+        textArea.style.position = 'fixed';
+        textArea.style.left = '-999999px';
+        textArea.style.top = '-999999px';
+        document.body.appendChild(textArea);
+        textArea.focus();
+        textArea.select();
+        
+        const successful = document.execCommand('copy');
+        document.body.removeChild(textArea);
+        
+        if (successful) {
+          showNotification('JSON已复制到剪贴板！', 'success');
+        } else {
+          throw new Error('复制命令执行失败');
+        }
+      }
     } catch (err) {
       console.error('复制失败:', err);
-      showNotification('复制失败，请手动复制', 'error');
+      // 最后的备用方案：显示JSON内容供用户手动复制
+      alert('自动复制失败，请手动复制以下内容：\n\n' + dataStr);
+      showNotification('复制失败，已显示内容供手动复制', 'error');
     }
   };
 

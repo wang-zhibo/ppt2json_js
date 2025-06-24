@@ -2,6 +2,8 @@
 
 一个功能强大的Web应用，可以将PowerPoint文件（PPT/PPTX）转换为结构化的JSON格式，同时提供Web界面和API接口。
 
+![图片描述](xmi.png)
+
 ## 功能特性
 
 ### 支持的PPT元素类型
