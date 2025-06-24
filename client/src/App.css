@@ -86,6 +86,12 @@
   margin-bottom: 16px;
 }
 
+.result-actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
 .json-container {
   margin-bottom: 16px;
   border-radius: 8px;
@@ -132,6 +138,11 @@
     flex-direction: column;
     align-items: flex-start;
     gap: 12px;
+  }
+  
+  .result-actions {
+    width: 100%;
+    justify-content: flex-start;
   }
   
   .json-container {

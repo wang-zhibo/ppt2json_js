@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Layout, Typography, Card, Upload, Button, message, Spin, Alert } from 'antd';
-import { UploadOutlined, FileTextOutlined, DownloadOutlined } from '@ant-design/icons';
+import { UploadOutlined, FileTextOutlined, DownloadOutlined, CopyOutlined } from '@ant-design/icons';
 import JSONPretty from 'react-json-pretty';
 import 'react-json-pretty/themes/monikai.css';
 import axios from 'axios';
@@ -65,6 +65,31 @@ function App() {
     message.success('JSON文件下载成功！');
   };
 
+  const copyJSON = async () => {
+    if (!result) return;
+
+    try {
+      const dataStr = JSON.stringify(result, null, 2);
+      await navigator.clipboard.writeText(dataStr);
+      message.success('JSON数据已复制到剪贴板！');
+    } catch (err) {
+      console.error('复制失败:', err);
+      // 降级方案：使用传统的复制方法
+      const textArea = document.createElement('textarea');
+      textArea.value = JSON.stringify(result, null, 2);
+      document.body.appendChild(textArea);
+      textArea.select();
+      try {
+        document.execCommand('copy');
+        message.success('JSON数据已复制到剪贴板！');
+      } catch (fallbackErr) {
+        console.error('降级复制也失败:', fallbackErr);
+        message.error('复制失败，请手动选择复制');
+      }
+      document.body.removeChild(textArea);
+    }
+  };
+
   const uploadProps = {
     name: 'file',
     multiple: false,
@@ -125,13 +150,23 @@ function App() {
               <div className="result-section">
                 <div className="result-header">
                   <Title level={4}>转换结果</Title>
-                  <Button
-                    type="primary"
-                    icon={<DownloadOutlined />}
-                    onClick={downloadJSON}
-                  >
-                    下载JSON
-                  </Button>
+                  <div className="result-actions">
+                    <Button
+                      type="primary"
+                      icon={<CopyOutlined />}
+                      onClick={copyJSON}
+                      style={{ marginRight: '8px' }}
+                    >
+                      复制JSON
+                    </Button>
+                    <Button
+                      type="primary"
+                      icon={<DownloadOutlined />}
+                      onClick={downloadJSON}
+                    >
+                      下载JSON
+                    </Button>
+                  </div>
                 </div>
 
                 <div className="json-container">
