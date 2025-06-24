@@ -6,7 +6,7 @@ PPT转JSON工具提供RESTful API接口，支持将PowerPoint文件转换为结�
 
 ## 基础信息
 
-- **基础URL**: `http://localhost:5000`
+- **基础URL**: `http://localhost:5001`
 - **内容类型**: `application/json`
 - **文件上传**: `multipart/form-data`
 
@@ -29,7 +29,7 @@ POST /api/convert
 **请求示例**
 ```bash
 curl -X POST \
-  http://localhost:5000/api/convert \
+  http://localhost:5001/api/convert \
   -H 'Content-Type: multipart/form-data' \
   -F 'file=@presentation.pptx'
 ```
@@ -341,7 +341,7 @@ async function convertPPT(file) {
 import requests
 
 def convert_ppt(file_path):
-    url = 'http://localhost:5000/api/convert'
+    url = 'http://localhost:5001/api/convert'
     
     with open(file_path, 'rb') as f:
         files = {'file': f}
@@ -361,11 +361,11 @@ def convert_ppt(file_path):
 ```bash
 # 转换PPT文件
 curl -X POST \
-  http://localhost:5000/api/convert \
+  http://localhost:5001/api/convert \
   -H 'Content-Type: multipart/form-data' \
   -F 'file=@presentation.pptx' \
   -o result.json
 
 # 检查服务状态
-curl http://localhost:5000/api/health
+curl http://localhost:5001/api/health
 ``` 

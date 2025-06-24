@@ -105,7 +105,7 @@ npm run install-client
 
 #### 开发模式
 ```bash
-# 启动后端服务器（端口5000）
+# 启动后端服务器（端口5001）
 npm run dev
 
 # 新开终端，启动前端开发服务器（端口3000）
@@ -122,8 +122,8 @@ npm start
 ```
 
 ### 4. 访问应用
-- Web界面：http://localhost:5000
-- API接口：http://localhost:5000/api/convert
+- Web界面：http://localhost:5001
+- API接口：http://localhost:5001/api/convert
 
 ## API使用
 
@@ -164,7 +164,7 @@ GET /api/health
 ### 使用curl上传文件
 ```bash
 curl -X POST \
-  http://localhost:5000/api/convert \
+  http://localhost:5001/api/convert \
   -H 'Content-Type: multipart/form-data' \
   -F 'file=@/path/to/your/presentation.pptx'
 ```
@@ -213,7 +213,7 @@ ppt2json/
 ## 配置选项
 
 ### 环境变量
-- `PORT` - 服务器端口（默认：5000）
+- `PORT` - 服务器端口（默认：5001）
 - `NODE_ENV` - 运行环境（development/production）
 
 ### 文件大小限制
